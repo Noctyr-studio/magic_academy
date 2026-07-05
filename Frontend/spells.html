@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://img.stablecog.com/insecure/1024w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vYjAwODI0ZDktZTUxYi00NDc0LWEzMWItYzdjMDUwZTVkNjNjLmpwZWc.webp">
+    <title>Hechizos y Encantamientos </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('/Image/spells.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            color: #ffffff;
+        }
+        h1 {
+            color: #ffee00;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 15px;
+            width: calc(25% - 20px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card h3 {
+            margin: 10px 0;
+            color: #ffee00;
+        }
+        .card p {
+            margin: 5px 0;
+            text-align: center;
+        }
+        .home-tab {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #ffee00;
+            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        @media (max-width: 1024px) {
+            .card {
+                width: calc(33.33% - 20px);
+            }
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="/index.html" class="home-tab">INICIO</a>
+    <h1>Hechizos y Encantamientos</h1>
+    
+    <div id="spellsContainer" class="container"></div>
+
+    <script>
+      async function getAllSpells() {
+        const response = await fetch('/data/spells.json');
+        return await response.json();
+    }
+
+    function displaySpells(spells) {
+        const container = document.getElementById('spellsContainer');
+        container.innerHTML = '';
+
+        spells.forEach(spell => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+                <h3>${spell.name}</h3>
+                <p>Tipo: ${spell.type}</p>
+                <p>Efecto: ${spell.effect}</p>
+                <p>Luz: ${spell.light}</p>
+            `;
+
+            container.appendChild(card);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const allSpells = await getAllSpells();
+            displaySpells(allSpells);
+        } catch (error) {
+            console.error('Error al cargar los hechizos:', error);
+        }
+    });
+    </script>
+</body>
+</html>

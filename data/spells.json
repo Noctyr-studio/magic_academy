@@ -1,0 +1,75 @@
+
+[
+  {
+    "name": "Ignis Flamma",
+    "type": "Hechizo",
+    "effect": "Invoca una llama mágica controlada.",
+    "light": "Rojo"
+  },
+  {
+    "name": "Aegis Arcana",
+    "type": "Encantamiento",
+    "effect": "Genera un escudo mágico temporal.",
+    "light": "Azul"
+  },
+  {
+    "name": "Ventus Impulsus",
+    "type": "Hechizo",
+    "effect": "Produce una poderosa ráfaga de viento.",
+    "light": "Blanco"
+  },
+  {
+    "name": "Lux Orbis",
+    "type": "Encantamiento",
+    "effect": "Crea una esfera de luz que ilumina el entorno.",
+    "light": "Dorado"
+  },
+  {
+    "name": "Terra Vinculum",
+    "type": "Maldición",
+    "effect": "Inmoviliza temporalmente al objetivo mediante raíces mágicas.",
+    "light": "Verde"
+  },
+  {
+    "name": "Glacies Nova",
+    "type": "Hechizo",
+    "effect": "Congela una pequeña área con hielo arcano.",
+    "light": "Celeste"
+  },
+  {
+    "name": "Umbra Velum",
+    "type": "Ilusión",
+    "effect": "Envuelve al lanzador en sombras para ocultarlo.",
+    "light": "Negro"
+  },
+  {
+    "name": "Tempus Lento",
+    "type": "Encantamiento",
+    "effect": "Reduce brevemente la velocidad de un objetivo.",
+    "light": "Violeta"
+  },
+  {
+    "name": "Spiritus Echo",
+    "type": "Conjuración",
+    "effect": "Invoca un eco espectral para explorar los alrededores.",
+    "light": "Plateado"
+  },
+  {
+    "name": "Fulgur Strike",
+    "type": "Hechizo",
+    "effect": "Lanza un rayo de energía eléctrica.",
+    "light": "Amarillo"
+  },
+  {
+    "name": "Floris Vitae",
+    "type": "Encantamiento",
+    "effect": "Acelera el crecimiento de plantas mágicas.",
+    "light": "Verde"
+  },
+  {
+    "name": "Arcanum Sigillum",
+    "type": "Protección",
+    "effect": "Sella puertas, cofres u objetos con un sello mágico.",
+    "light": "Blanco"
+  }
+]

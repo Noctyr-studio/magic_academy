@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="Styles/Inicio.css">
+     <title>Wizard School</title>
+     <link rel="icon" href="/Image/favicon.jpg">
+</head>
+
+<body class="bodyConteiner">
+     <div class="header">
+          <div class="boxHeader"><a href="index.html">INICIO</a></div>
+          <div class="boxHeader" id="registrateBtn"><a href="/Backend/register.html">REGISTRATE</a></div>
+          <div class="boxHeader" id="cerrarSesionBtn" style="display: none;"><a href="index.html">CERRAR SESIÓN</a></div>
+          <div class="boxHeader"><a href="/Backend/index.html">ACCEDER</a></div>
+          <div class="imgLogo">
+               <img src="/Image/amatista.png" class="logo">
+          </div>
+     </div>
+
+     <div class="menu">
+          <a href="/Frontend/casas.html" target="_self" class="elementosMenu">CASAS</a>
+          <a href="/Frontend/encuesta.html" target="_self" class="elementosMenu">ENCUESTA</a>
+          <a href="/Frontend/libros.html" target="_self" class="elementosMenu">LIBROS</a>
+          <a href="/Frontend/profesores.html" target="_self" class="elementosMenu">PROFESORES</a>
+          <a href="/Frontend/spells.html" target="_self" class="elementosMenu">HECHIZOS</a>
+     
+     </div>
+     <div class="main">
+          <p>
+              La Academia Arcana es un antiguo internado dedicado al estudio de la magia y las artes místicas. Se encuentra en una región montañosa, junto a un extenso lago, aunque su ubicación exacta permanece en secreto gracias a poderosos encantamientos de ocultación que impiden que personas ajenas puedan encontrarla.
+
+Quienes no poseen afinidad con la magia perciben el lugar como unas antiguas ruinas abandonadas o simplemente son desviados de su camino por hechizos protectores. Solo aquellos invitados o autorizados pueden atravesar las barreras que resguardan la academia y acceder a sus instalaciones.
+
+El campus cuenta con torres, bibliotecas, laboratorios alquímicos, jardines encantados y amplios salones donde los estudiantes perfeccionan sus habilidades bajo la guía de experimentados maestros. La institución ha formado a generaciones de magos y hechiceros, convirtiéndose en uno de los centros de enseñanza mágica más prestigiosos del mundo.
+
+Como medida de seguridad, muchos dispositivos tecnológicos presentan interferencias o dejan de funcionar correctamente dentro de los límites de la academia debido a la intensa concentración de energía mágica que impregna el lugar.
+
+
+               <br><br>
+               El lema de la Academia Arcana es:
+
+               "La sabiduría ilumina a quienes buscan el conocimiento"
+          </p>
+          <iframe
+          width="315"
+          height="314"
+          src=""
+          title="YouTube Short"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+          </iframe>
+     </div>
+     
+     <div class="footer">
+          <div class="redes">
+               <img class="imgRedes" src="/Image/noctyr.png"> https://noctyr-studio.com/</img>
+               <br>       
+               <img class="imgRedes" src="/Image/Logo-Instagram.png"> noctyr.studio</img>
+               <br>
+               <img class="imgRedes" src="/Image/Logo-Mail.png"> noctyr.studio96@gmail.com</img>
+          </div>
+          <div>
+               <p>MADE BY:</p>
+               <p>Baltieri, Matias</p>
+             
+     </div>
+          <script>
+          function checkLoginStatus() {
+          const registrateBtn = document.getElementById('registrateBtn');
+          const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+
+          if (registrateBtn && cerrarSesionBtn) {
+               if (localStorage.getItem('userData')) {
+                    registrateBtn.style.display = 'none';
+                    cerrarSesionBtn.style.display = 'inline-block';
+               } else {
+                    registrateBtn.style.display = 'inline-block';
+                    cerrarSesionBtn.style.display = 'none';
+               }
+          } else {
+               console.log('Botones de registro o cierre de sesión no encontrados');
+          }
+          }
+          document.addEventListener('DOMContentLoaded', function() {
+          const registrateBtn = document.getElementById('register-tab');
+          const cerrarSesionBtn = document.getElementById('cerrarSesionBtn');
+     
+          checkLoginStatus();
+     
+          cerrarSesionBtn.addEventListener('click', function(e) {
+               e.preventDefault();
+               localStorage.removeItem('userData');
+               checkLoginStatus();
+               window.location.href = '/index.html';
+          });
+
+     })
+     
+          </script>
+</body>
+
+</html>
