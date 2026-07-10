@@ -1,5 +1,5 @@
 
-# 🏰 Learning Hub
+# 🏰 Magic Academy 
 
 Una plataforma web inspirada en el concepto de una academia mágica, desarrollada originalmente durante un bootcamp y posteriormente refactorizada para eliminar dependencias externas y contenido con copyright.
 
