@@ -36,7 +36,7 @@ h3 {
     align-items: center;
     min-height: 100vh;
     
-    background-image: url(/Image/castle.jpeg);
+    background-image: url(/img/castle.jpeg);
     background-repeat: no-repeat;
     background-size:cover; 
     background-position: center;    
@@ -175,7 +175,7 @@ button:hover {
 
 @media (max-width: 800px) and (min-width: 626px){
     .conteiner {
-        background-image: url(/Image/loginresponsive.jpg);
+        background-image: url(/img/loginresponsive.jpg);
         background-size: 800px 1024px;
         background-repeat: no-repeat;
     }
@@ -190,7 +190,7 @@ button:hover {
         color: #000;
     }
     .conteiner {
-        background-image: url(/Image/registerresponsive.jpg);
+        background-image: url(/img/registerresponsive.jpg);
         background-size: 419px 896px;
         background-position: center;
         height: auto;

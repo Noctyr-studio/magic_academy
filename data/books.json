@@ -5,55 +5,55 @@
     "author": "Maestro Aldren",
     "release_date": "Año 742",
     "pages": 328,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Alquimia Moderna",
     "author": "Selene Arkwind",
     "release_date": "Año 756",
     "pages": 284,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Manual de Pociones",
     "author": "Mirabel Ashcroft",
     "release_date": "Año 731",
     "pages": 356,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Runas Antiguas",
     "author": "Eldric Thorn",
     "release_date": "Año 689",
     "pages": 412,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Bestias Arcanas",
     "author": "Lyra Valen",
     "release_date": "Año 774",
     "pages": 298,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Cristales Encantados",
     "author": "Orion Vale",
     "release_date": "Año 719",
     "pages": 241,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Historia de los Reinos Mágicos",
     "author": "Cassian Merrow",
     "release_date": "Año 663",
     "pages": 487,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   },
   {
     "title": "Magia Elemental",
     "author": "Elowen Frost",
     "release_date": "Año 781",
     "pages": 334,
-    "cover": "/Image/book.png"
+    "cover": "/img/book.png"
   }
 ]

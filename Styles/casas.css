@@ -29,14 +29,14 @@ body{
 
 .header{
     display:flex;
-    background-image: url(/Image/fondo-header.jpg);
+    background-image: url(/img/fondo-header.jpg);
     align-items: center;
     justify-content:space-between;
     color: gold;
 }
 .main{
     display: flex;
-    background-image: url(/Image/castle.jpeg);
+    background-image: url(/img/castle.jpeg);
     background-size: cover;
     color: goldenrod;
     flex-direction: column;
@@ -47,7 +47,7 @@ body{
 
 .menu{
     display: grid;
-    background-image: url(/Image/tree.jpeg);
+    background-image: url(/img/tree.jpeg);
     background-size: cover;
     color: goldenrod;
     text-align: center;
@@ -104,7 +104,7 @@ a {
 .footer{
     display:flex;
     justify-content: space-around;
-    background-image: url(/Image/fondo-footer.avif);
+    background-image: url(/img/fondo-footer.avif);
     background-size: cover;
     text-align: left;
     align-items: center;

@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="https://img.stablecog.com/insecure/1024w/aHR0cHM6Ly9iLnN0YWJsZWNvZy5jb20vYjAwODI0ZDktZTUxYi00NDc0LWEzMWItYzdjMDUwZTVkNjNjLmpwZWc.webp">
-    <title>PROFESORES</title>
+    <title>Libros de la Academia</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-image: url('/Image/charactersbg.jpg');
+            background-image: url('/img/castle.jpeg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -33,7 +33,7 @@
             background-color: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             padding: 15px;
-            width: calc(25% - 20px);
+            width: calc(33.33% - 20px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             display: flex;
             flex-direction: column;
@@ -45,7 +45,7 @@
         }
         .card img {
             width: 100%;
-            height: 300px;
+            height: 500px;
             object-fit: cover;
             border-radius: 5px;
             margin-bottom: 10px;
@@ -53,6 +53,7 @@
         .card h3 {
             margin: 10px 0;
             color: #ffee00;
+            text-align: center;
         }
         .card p {
             margin: 5px 0;
@@ -73,48 +74,42 @@
         }
         @media (max-width: 1024px) {
             .card {
-                width: calc(33.33% - 20px);
+                width: calc(50% - 20px);
             }
         }
         @media (max-width: 768px) {
             .card {
-                width: calc(50% - 20px);
-            }
-        }
-        @media (max-width: 480px) {
-            .card {
-                width: 100%;
+                width: calc(100% - 20px);
             }
         }
     </style>
 </head>
 <body>
     <a href="/index.html" class="home-tab">INICIO</a>
-    <h1>Profesores</h1>
+    <h1>Libros de la Academia</h1>
     
-    <div id="charactersContainer" class="container"></div>
+    <div id="booksContainer" class="container"></div>
 
     <script>
-        async function getAllCharacters() {
-        const response = await fetch('/data/professors.json');
+        async function getAllBooks() {
+        const response = await fetch('/data/books.json');
         return await response.json();
     }
 
-    function displayCharacters(characters) {
-        const container = document.getElementById('charactersContainer');
+    function displayBooks(books) {
+        const container = document.getElementById('booksContainer');
         container.innerHTML = '';
 
-        characters.forEach(character => {
+        books.forEach(book => {
             const card = document.createElement('div');
             card.className = 'card';
 
             card.innerHTML = `
-                <img src="/Image/professor.png" alt="${character.name}">
-                <h3>${character.name}</h3>
-                <p>Casa: ${character.house}</p>
-                <p>Especie: ${character.species}</p>
-                <p>Afinidad mágica: ${character.magicAffinity}</p>
-                
+                <img src="${book.cover}" alt="${book.title}">
+                <h3>${book.title}</h3>
+                <p>Autor: ${book.author}</p>
+                <p>Fecha de publicación: ${book.release_date}</p>
+                <p>Páginas: ${book.pages}</p>
             `;
 
             container.appendChild(card);
@@ -123,10 +118,10 @@
 
     document.addEventListener('DOMContentLoaded', async () => {
         try {
-            const allCharacters = await getAllCharacters();
-            displayCharacters(allCharacters);
+            const allBooks = await getAllBooks();
+            displayBooks(allBooks);
         } catch (error) {
-            console.error('Error al cargar los profesores:', error);
+            console.error('Error al cargar los libros:', error);
         }
     });
     </script>

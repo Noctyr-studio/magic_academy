@@ -5,83 +5,83 @@
     "house": "Casa del León",
     "species": "Humano",
     "magicAffinity": "Fuego",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Selene Arkwind",
     "house": "Casa del Halcón",
     "species": "Humano",
     "magicAffinity": "Luz",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Eldric Thorn",
     "house": "Casa de la Serpiente",
     "species": "Humano",
     "magicAffinity": "Sombras",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Mirabel Ashcroft",
     "house": "Casa del Halcón",
     "species": "Humana",
     "magicAffinity": "Agua",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Lyra Valen",
     "house": "Casa del León",
     "species": "Humana",
     "magicAffinity": "Naturaleza",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Orion Vale",
     "house": "Casa de la Serpiente",
     "species": "Humano",
     "magicAffinity": "Rayo",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Cassian Merrow",
     "house": "Casa del Halcón",
     "species": "Humano",
     "magicAffinity": "Arcana",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Elowen Frost",
     "house": "Casa del León",
     "species": "Humana",
     "magicAffinity": "Hielo",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Valeria Nightshade",
     "house": "Casa de la Serpiente",
     "species": "Humana",
     "magicAffinity": "Oscuridad",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Thaddeus Grimm",
     "house": "Casa del Halcón",
     "species": "Humano",
     "magicAffinity": "Tiempo",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Iris Greenbloom",
     "house": "Casa del León",
     "species": "Humana",
     "magicAffinity": "Vida",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   },
   {
     "name": "Magnus Blackwood",
     "house": "Casa de la Serpiente",
     "species": "Humano",
     "magicAffinity": "Tierra",
-    "image": "/Image/professor.png"
+    "image": "/img/professor.png"
   }
 ]
