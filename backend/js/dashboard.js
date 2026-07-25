@@ -1,6 +1,9 @@
 
 
-const url = "https://magic-academy.onrender.com/api/";
+const API_URL = "https://magic-academy.onrender.com/api/";
+
+const BASE_URL = "https://magic-academy.onrender.com";
+
 const content = document.getElementById("content");
 
 /* LEER USUARIOS*/ 
@@ -42,7 +45,7 @@ async function getPersons() {
 
     try {
 
-        const response = await fetch(url + "personas/");
+        const response = await fetch(API_URL + "personas/");
 
         const personas = await response.json();
 
@@ -72,12 +75,12 @@ function fillTable(personas) {
                 <td>${persona.email}</td>
                 <td>${persona.edad}</td>
                 <td>
-                ${
-                    persona.imagen
-                    ? `<img src="http://127.0.0.1:8000${persona.imagen}" width="80">`
-                    : "Sin imagen"
-                }
-            </td>
+                    ${
+                        persona.imagen
+                        ? `<img src="${BASE_URL}${persona.imagen}" width="80">`
+                        : "Sin imagen"
+                    }
+                </td>
 
                 <td>
                     <button onclick="renderEdit(${persona.id})"> ✏️</button>
@@ -157,7 +160,7 @@ async function createPerson(event){
     }
 
 
-    const response = await fetch(url + "personas/", {
+    const response = await fetch(API_URL  + "personas/", {
 
         method:"POST",
 
@@ -185,7 +188,7 @@ async function deletePerson(id){
     }
 
 
-    await fetch(url + "personas/" + id + "/", {
+    await fetch(API_URL + "personas/" + id + "/", {
 
         method:"DELETE"
 
@@ -201,7 +204,7 @@ async function deletePerson(id){
 async function renderEdit(id){
 
     const response = await fetch(
-        url + "personas/" + id + "/"
+        API_URL + "personas/" + id + "/"
     );
 
 
@@ -294,7 +297,7 @@ async function updatePerson(event, id){
 
 
     const response = await fetch(
-        url + "personas/" + id + "/",
+        API_URL + "personas/" + id + "/",
         {
             method:"POST",
             body:formData
