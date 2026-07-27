@@ -23,24 +23,17 @@ function renderRead() {
 
             <h2>Listado de Personas</h2>
 
-            <table>
+            <div id="loading-message">
+                <p>
+                    ⏳ Conectando con el servidor...
+                </p>
 
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Email</th>
-                        <th>Edad</th>
-                        <th>Casa</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-
-                <tbody id="table-body">
-
-                </tbody>
-
-            </table>
+                <small>
+                    * El backend está alojado en Render Free.
+                    <br>
+                    * La primera carga puede demorar unos segundos mientras el servidor se inicia.
+                </small>
+            </div>
 
         </section>
     `;
@@ -108,26 +101,48 @@ function getCasaBadge(casa){
 
 function fillTable(personas) {
 
-    const tbody = document.getElementById("table-body");
+    content.innerHTML = `
+        <section class="back">
 
-    tbody.innerHTML = "";
+            <h2>Listado de Personas</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Edad</th>
+                        <th>Casa</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+
+                <tbody id="table-body">
+
+                </tbody>
+
+            </table>
+
+        </section>
+    `;
+
+    const tbody = document.getElementById("table-body");
 
     personas.forEach(persona => {
 
         tbody.innerHTML += `
             <tr>
-
                 <td>${persona.id}</td>
                 <td>${persona.nombre}</td>
                 <td>${persona.email}</td>
                 <td>${persona.edad}</td>
                 <td>${getCasaBadge(persona.casa)}</td>
-
                 <td>
-                    <button onclick="renderEdit(${persona.id})"> ✏️</button>
+                    <button onclick="renderEdit(${persona.id})">✏️</button>
                     <button onclick="deletePerson(${persona.id})">🗑️</button>
                 </td>
-
             </tr>
         `;
 
@@ -170,17 +185,11 @@ function renderCreate(){
 
                 <select id="casa">
 
-                <option value="leon">
-                🦁 León
-                </option>
+                <option value="leon" style="color:#c62828;">🦁 León</option>
 
-                <option value="halcon">
-                🦅 Halcón
-                </option>
+                <option value="halcon" style="color:#1565c0;">🦅 Halcón</option>
 
-                <option value="serpiente">
-                🐍 Serpiente
-                </option>
+                <option value="serpiente" style="color:#2e7d32;">🐍 Serpiente</option>
 
                 </select>
 
@@ -193,6 +202,13 @@ function renderCreate(){
         </section>
 
     `;
+    const select = document.getElementById("casa");
+
+    actualizarColor(select);
+
+    select.addEventListener("change", () => {
+        actualizarColor(select);
+    });
 }
 
 async function createPerson(event){
@@ -304,19 +320,31 @@ async function renderEdit(id){
 
                 <select id="casaEdit">
 
-                    <option value="leon" ${persona.casa === "leon" ? "selected" : ""}>
-                        🦁 León
-                    </option>
+                <option
+                    value="leon"
+                    style="color:#c62828;"
+                    ${persona.casa === "leon" ? "selected" : ""}
+                >
+                    🦁 León
+                </option>
 
-                    <option value="halcon" ${persona.casa === "halcon" ? "selected" : ""}>
-                        🦅 Halcón
-                    </option>
+                <option
+                    value="halcon"
+                    style="color:#1565c0;"
+                    ${persona.casa === "halcon" ? "selected" : ""}
+                >
+                    🦅 Halcón
+                </option>
 
-                    <option value="serpiente" ${persona.casa === "serpiente" ? "selected" : ""}>
-                        🐍 Serpiente
-                    </option>
+                <option
+                    value="serpiente"
+                    style="color:#2e7d32;"
+                    ${persona.casa === "serpiente" ? "selected" : ""}
+                >
+                    🐍 Serpiente
+                </option>
 
-                </select>
+            </select>
 
 
                 <button type="submit">
@@ -329,7 +357,30 @@ async function renderEdit(id){
         </section>
 
     `;
+
+    const select = document.getElementById("casaEdit");
+
+    actualizarColor(select);
+
+    select.addEventListener("change", () => {
+        actualizarColor(select);
+    });
+
+   
 }
+
+function actualizarColor(select){
+
+    const colores = {
+        leon: "#c62828",
+        halcon: "#1565c0",
+        serpiente: "#2e7d32"
+    };
+
+    select.style.color = colores[select.value];
+
+}
+
 
 async function updatePerson(event, id){
 
@@ -380,3 +431,8 @@ async function updatePerson(event, id){
     renderRead();
 
 }
+
+window.addEventListener("DOMContentLoaded", () => {
+    renderRead();
+});
+
