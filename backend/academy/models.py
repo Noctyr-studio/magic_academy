@@ -4,16 +4,22 @@ from django.db import models
 
 class Persona(models.Model):
 
+    CASAS = [
+        ("leon", "León"),
+        ("halcon", "Halcón"),
+        ("serpiente", "Serpiente"),
+    ]
+
     nombre = models.CharField(max_length=100)
 
     email = models.EmailField()
 
     edad = models.PositiveIntegerField()
 
-    imagen = models.ImageField(
-        upload_to="personas/",
-        blank=True,
-        null=True
+    casa = models.CharField(
+        max_length=20,
+        choices=CASAS,
+        default="leon"
     )
 
     def __str__(self):

@@ -1,8 +1,16 @@
 
 
-const API_URL = "https://magic-academy.onrender.com/api/";
+const IS_LOCAL =
+    window.location.hostname === "127.0.0.1" ||
+    window.location.hostname === "localhost";
 
-const BASE_URL = "https://magic-academy.onrender.com";
+const API_URL = IS_LOCAL
+    ? "http://127.0.0.1:8000/api/"
+    : "https://magic-academy.onrender.com/api/";
+
+const BASE_URL = IS_LOCAL
+    ? "http://127.0.0.1:8000"
+    : "https://magic-academy.onrender.com";
 
 const content = document.getElementById("content");
 
@@ -23,7 +31,7 @@ function renderRead() {
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Edad</th>
-                        <th>Imagen</th>
+                        <th>Casa</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -59,6 +67,45 @@ async function getPersons() {
 
 }
 
+function getCasaBadge(casa){
+
+    const casas = {
+        leon: {
+            color:"#c62828",
+            icono:"🦁"
+        },
+        halcon:{
+            color:"#1565c0",
+            icono:"🦅"
+        },
+        serpiente:{
+            color:"#2e7d32",
+            icono:"🐍"
+        }
+    };
+
+    const info = casas[casa];
+
+    return `
+        <div
+            style="
+                width:45px;
+                height:45px;
+                background:${info.color};
+                border-radius:10px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-size:22px;
+                margin:auto;
+            "
+            title="${casa}"
+        >
+            ${info.icono}
+        </div>
+    `;
+}
+
 function fillTable(personas) {
 
     const tbody = document.getElementById("table-body");
@@ -74,13 +121,7 @@ function fillTable(personas) {
                 <td>${persona.nombre}</td>
                 <td>${persona.email}</td>
                 <td>${persona.edad}</td>
-                <td>
-                    ${
-                        persona.imagen
-                        ? `<img src="${BASE_URL}${persona.imagen}" width="80">`
-                        : "Sin imagen"
-                    }
-                </td>
+                <td>${getCasaBadge(persona.casa)}</td>
 
                 <td>
                     <button onclick="renderEdit(${persona.id})"> ✏️</button>
@@ -127,10 +168,21 @@ function renderCreate(){
                     required
                 >
 
-                <input 
-                    id="imagen" 
-                    type="file"
-                >
+                <select id="casa">
+
+                <option value="leon">
+                🦁 León
+                </option>
+
+                <option value="halcon">
+                🦅 Halcón
+                </option>
+
+                <option value="serpiente">
+                🐍 Serpiente
+                </option>
+
+                </select>
 
                 <button type="submit">
                     Guardar
@@ -149,18 +201,28 @@ async function createPerson(event){
 
     const formData = new FormData();
 
-    formData.append("email", document.getElementById("email").value);
-    formData.append("nombre", document.getElementById("nombre").value);
-    formData.append("edad", document.getElementById("edad").value);
+    formData.append(
+        "email",
+        document.getElementById("email").value
+    );
 
-    const imagen = document.getElementById("imagen").files[0];
+    formData.append(
+        "nombre",
+        document.getElementById("nombre").value
+    );
 
-    if(imagen){
-        formData.append("imagen", imagen);
-    }
+    formData.append(
+        "edad",
+        document.getElementById("edad").value
+    );
+
+    formData.append(
+        "casa",
+        document.getElementById("casa").value
+    );
 
 
-    const response = await fetch(API_URL  + "personas/", {
+    const response = await fetch(API_URL + "personas/", {
 
         method:"POST",
 
@@ -207,7 +269,6 @@ async function renderEdit(id){
         API_URL + "personas/" + id + "/"
     );
 
-
     const persona = await response.json();
 
 
@@ -216,7 +277,6 @@ async function renderEdit(id){
         <section class="back">
 
             <h2>Editar Persona</h2>
-
 
             <form onsubmit="updatePerson(event, ${id})">
 
@@ -240,10 +300,24 @@ async function renderEdit(id){
                     type="number"
                     value="${persona.edad}"
                 >
-                <input 
-                    id="imagenEdit"
-                    type="file"
-                >
+
+
+                <select id="casaEdit">
+
+                    <option value="leon" ${persona.casa === "leon" ? "selected" : ""}>
+                        🦁 León
+                    </option>
+
+                    <option value="halcon" ${persona.casa === "halcon" ? "selected" : ""}>
+                        🦅 Halcón
+                    </option>
+
+                    <option value="serpiente" ${persona.casa === "serpiente" ? "selected" : ""}>
+                        🐍 Serpiente
+                    </option>
+
+                </select>
+
 
                 <button type="submit">
                     Guardar cambios
@@ -283,17 +357,10 @@ async function updatePerson(event, id){
     );
 
 
-    const imagen = document.getElementById("imagenEdit").files[0];
-
-
-    if(imagen){
-
-        formData.append(
-            "imagen",
-            imagen
-        );
-
-    }
+    formData.append(
+        "casa",
+        document.getElementById("casaEdit").value
+    );
 
 
     const response = await fetch(
@@ -306,7 +373,6 @@ async function updatePerson(event, id){
 
 
     const resultado = await response.json();
-
 
     console.log(resultado);
 

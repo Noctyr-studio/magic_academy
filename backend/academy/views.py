@@ -21,7 +21,7 @@ def lista_personas(request):
             "nombre": persona.nombre,
             "email": persona.email,
             "edad": persona.edad,
-            "imagen": persona.imagen.url if persona.imagen else None,
+            "casa": persona.casa, 
         })
 
         return JsonResponse(data, safe=False)
@@ -33,7 +33,7 @@ def lista_personas(request):
             nombre=request.POST.get("nombre"),
             email=request.POST.get("email"),
             edad=request.POST.get("edad"),
-            imagen=request.FILES.get("imagen")
+            casa=request.POST.get("casa")
         )
 
         return JsonResponse({
@@ -80,6 +80,8 @@ def persona_detail(request, id):
             "nombre": persona.nombre,
             "email": persona.email,
             "edad": persona.edad,
+            "casa": persona.casa,
+            
             
         })
 
@@ -87,7 +89,7 @@ def persona_detail(request, id):
     elif request.method == "POST":
 
         print("POST:", request.POST)
-        print("FILES:", request.FILES)
+        
 
         persona.nombre = request.POST.get(
             "nombre",
@@ -105,9 +107,10 @@ def persona_detail(request, id):
         )
 
 
-        if request.FILES.get("imagen"):
-            persona.imagen = request.FILES.get("imagen")
-
+        persona.casa = request.POST.get(
+                "casa",
+                 persona.casa
+        )
 
         persona.save()
 
