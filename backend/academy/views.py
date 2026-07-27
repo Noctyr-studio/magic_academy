@@ -3,11 +3,34 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from .models import Persona
 
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
+from django.http import JsonResponse
+
+
+def api_login_required(view):
+    def wrapper(request, *args, **kwargs):
+
+        if not request.user.is_authenticated:
+            return JsonResponse(
+                {"error": "No autenticado"},
+                status=401
+            )
+
+        return view(request, *args, **kwargs)
+
+    return wrapper
+
+@login_required
+def dashboard(request):
+    return render(request, "dashboard.html")
+
+
+
+@api_login_required
 @csrf_exempt
 def lista_personas(request):
-
-
 
     if request.method == "GET":
 
@@ -60,7 +83,7 @@ def lista_personas(request):
             "mensaje": "Persona eliminada"
         })
 
-
+@api_login_required
 @csrf_exempt
 def persona_detail(request, id):
 
