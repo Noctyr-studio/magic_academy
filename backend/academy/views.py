@@ -8,8 +8,11 @@ from django.contrib.auth.decorators import login_required
 
 from django.http import JsonResponse
 
+from functools import wraps
 
 def api_login_required(view):
+
+    @wraps(view)
     def wrapper(request, *args, **kwargs):
 
         if not request.user.is_authenticated:
