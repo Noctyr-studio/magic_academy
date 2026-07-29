@@ -14,6 +14,35 @@ const BASE_URL = IS_LOCAL
 
 const content = document.getElementById("content");
 
+/*  TOKENS */
+
+function getCookie(name) {
+    let cookieValue = null;
+
+    if (document.cookie && document.cookie !== "") {
+
+        const cookies = document.cookie.split(";");
+
+        for (let cookie of cookies) {
+
+            cookie = cookie.trim();
+
+            if (cookie.startsWith(name + "=")) {
+
+                cookieValue = decodeURIComponent(
+                    cookie.substring(name.length + 1)
+                );
+
+                break;
+            }
+        }
+    }
+
+    return cookieValue;
+}
+
+const csrfToken = getCookie("csrftoken");
+
 /* LEER USUARIOS*/ 
 
 function renderRead() {
@@ -150,7 +179,7 @@ function fillTable(personas) {
 
 }
 
-/* CREAR USUARIOS*/ 
+
 
 function renderCreate(){
 
@@ -211,6 +240,8 @@ function renderCreate(){
     });
 }
 
+/* CREAR USUARIOS*/ 
+
 async function createPerson(event){
 
     event.preventDefault();
@@ -239,12 +270,12 @@ async function createPerson(event){
 
 
     const response = await fetch(API_URL + "personas/", {
-
-        method:"POST",
-
-        body:formData
-
-    });
+    method: "POST",
+    headers: {
+        "X-CSRFToken": csrfToken
+    },
+    body: formData
+});
 
 
     const data = await response.json();
@@ -266,18 +297,25 @@ async function deletePerson(id){
     }
 
 
-    await fetch(API_URL + "personas/" + id + "/", {
+    const response =  await fetch(API_URL + "personas/" + id + "/", {
+    method: "DELETE",
+    headers: {
+        "X-CSRFToken": csrfToken
+    }
+});
 
-        method:"DELETE"
 
-    });
+    const resultado = await response.json();
 
+    console.log(resultado);
 
-    getPersons();
+    if (response.ok) {
+        getPersons();
+    }
 
 }
 
-/* EDITAR USUARIOS*/ 
+
 
 async function renderEdit(id){
 
@@ -381,6 +419,7 @@ function actualizarColor(select){
 
 }
 
+/* EDITAR USUARIOS*/ 
 
 async function updatePerson(event, id){
 
@@ -415,12 +454,15 @@ async function updatePerson(event, id){
 
 
     const response = await fetch(
-        API_URL + "personas/" + id + "/",
-        {
-            method:"POST",
-            body:formData
-        }
-    );
+    API_URL + "personas/" + id + "/",
+    {
+        method: "POST",
+        headers: {
+            "X-CSRFToken": csrfToken
+        },
+        body: formData
+    }
+);
 
 
     const resultado = await response.json();

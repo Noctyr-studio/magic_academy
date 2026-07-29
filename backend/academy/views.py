@@ -32,7 +32,6 @@ def dashboard(request):
 
 
 @api_login_required
-@csrf_exempt
 def lista_personas(request):
 
     if request.method == "GET":
@@ -87,7 +86,6 @@ def lista_personas(request):
         })
 
 @api_login_required
-@csrf_exempt
 def persona_detail(request, id):
 
     try:
