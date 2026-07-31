@@ -1,27 +1,80 @@
 
+{% load static %}
 <!DOCTYPE html>
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <title>Magic Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Macondo&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
 </head>
 
 <body>
 
-    <h2>Magic Academy</h2>
+<div class="login-card">
 
+    <h1>MAGIC ACADEMY</h1>
+
+    
     <form method="post">
+    {% csrf_token %}
 
-        {% csrf_token %}
+    <label for="id_username">Email</label>
 
-        {{ form.as_p }}
+    <input
+        id="id_username"
+        name="username"
+        type="text"
+        placeholder="Ingrese su email"
+        required>
 
-        <button type="submit">
-            Ingresar
+    <label for="id_password">Contraseña</label>
+
+    <div class="password-container">
+        <input
+            id="id_password"
+            name="password"
+            type="password"
+            placeholder="Ingrese su contraseña"
+            required>
+
+        <button type="button" id="togglePassword">
+            👁️
         </button>
+    </div>
 
-    </form>
+    <button type="submit">
+        Iniciar sesión
+    </button>
 
+</form>
+</div>
+<script>
+    
+    const togglePassword = document.getElementById("togglePassword");
+    const password = document.getElementById("id_password");
+
+    togglePassword.addEventListener("click", () => {
+        const type = password.type === "password" 
+            ? "text" 
+            : "password";
+
+        password.type = type;
+
+        togglePassword.textContent = type === "password" 
+            ? "👁️" 
+            : "🙈";
+    });
+
+</script>
 </body>
 </html>
+
+
+
+
+

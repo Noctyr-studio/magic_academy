@@ -1,0 +1,275 @@
+
+
+    /* =========================
+    MAGIC ACADEMY LOGIN
+    ========================= */
+
+:root {
+    --primary: #6D3BCF;
+    --primary-light: #8A63F5;
+    --glass: rgba(73, 30, 112, 0.55);
+    --input: rgba(37, 8, 63, 0.80);
+    --text: #FFD46A;
+    --white: #FFFFFF;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    text-align: center;
+}
+
+body{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-family: "Cinzel", bold;
+
+  
+    background-image: url("/static/img/castle.jpeg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+}
+
+
+/* Oscurece un poco la imagen */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:-2;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.login-card{
+
+    width:520px;
+
+    padding:55px;
+
+    border-radius:18px;
+
+    background:var(--glass);
+
+    backdrop-filter:blur(16px);
+
+    -webkit-backdrop-filter:blur(16px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.45);
+
+}
+
+
+/* =========================
+   TITULO
+========================= */
+
+.login-card h1{
+
+    color:var(--text);
+
+    text-align:center;
+
+    font-size:3rem;
+
+    font-family: "Cinzel Decorative", serif;
+
+    font-weight:700;
+
+    margin-bottom:45px;
+
+  
+    
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
+.password-container button {
+    position: absolute;
+    right: 10px;
+    padding-bottom: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+
+/* =========================
+   LABELS
+========================= */
+
+label{
+
+    color:var(--text);
+
+    text-align:center;
+
+    font-family: "Macondo", cursive;
+   
+    font-size:1.75rem;
+
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+input{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:10px;
+
+    padding:0 18px;
+
+    background:var(--input);
+
+    color:white;
+
+    font-family: "Macondo", cursive;
+   
+    font-size:1.5rem;
+
+    transition:.25s;
+
+}
+
+
+input::placeholder{
+
+    color:rgba(255,255,255,.55);
+    
+
+}
+
+
+input:focus{
+
+    border:1px solid var(--primary-light);
+
+    box-shadow:
+        0 0 14px rgba(138,99,245,.35);
+
+}
+
+
+/* =========================
+   BOTON
+========================= */
+
+button{
+
+    margin-top:12px;
+
+    height:54px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:1.75rem;
+
+    color:white;
+
+    font-family: "Macondo", cursive;
+
+    background:linear-gradient(
+        180deg,
+        var(--primary-light),
+        var(--primary)
+    );
+
+    transition:.25s;
+
+}
+
+
+button:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(109,59,207,.45);
+
+}
+
+
+button:active{
+
+    transform:scale(.98);
+
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width:650px){
+
+    .login-card{
+
+        width:92%;
+
+        padding:35px 25px;
+
+    }
+
+    .login-card h1{
+
+        font-size:2rem;
+
+    }
+
+}

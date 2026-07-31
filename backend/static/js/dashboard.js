@@ -43,6 +43,8 @@ function getCookie(name) {
 
 const csrfToken = getCookie("csrftoken");
 
+
+
 /* LEER USUARIOS*/ 
 
 function renderRead() {
